@@ -1,0 +1,30 @@
+%h1 Blog
+
+
+- flash.each do |name, msg|
+	= show_flash(name, msg)
+//	-if name == :alert
+//	.wrong-style
+//	= msg 
+//	- elsif name == :notice
+//		.correct-style
+//			=msg
+%table
+	%thead
+		%td 
+			%h3 Name
+		%td 
+			%h3 Content
+			%tbody 
+				- @posts.each do |post|
+					%tr
+						%td
+							= post.name
+						%td
+							= post.context
+						%td 
+							= link_to "edit message", edit_post_path(post)
+						%td 
+							= link_to "Delete", post_path(post), method: :delete
+%br
+= link_to "new message", new_post_path
